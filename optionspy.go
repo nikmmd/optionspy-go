@@ -205,6 +205,7 @@ func main() {
 	//TODO: Maybe add request proxy for large number of symbols
 
 	c.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 50})
+	c.SetRequestTimeout(60 * time.Second)
 
 	d := c.Clone()
 
