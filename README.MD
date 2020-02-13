@@ -6,12 +6,12 @@
 - Read symbols from txt file
 - Write to Postgres
 - Docker
+- Dedupe with index constraint
 - Configurable poll interval (TODO)
 - Error handling/retries (TODO)
 - Proxy support (TODO)
 - Intraday pull underlying (TODO)
 - Scheduled with CRON
-- Scheduled Dedupe (TODO)
 
 
 ## TODO:
