@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"regexp"
@@ -38,7 +37,7 @@ func WriteOptions(db *pg.DB, options *[]Option) {
 	if len(*options) > 0 {
 		err := db.Insert(options)
 		if err != nil {
-			log.Fatal(err)
+			fmt.Println(err)
 		}
 	}
 
@@ -158,6 +157,9 @@ func createSchema(db *pg.DB) error {
 	if err != nil {
 		return err
 	}
+	db.Exec(`
+	CREATE UNIQUE INDEX options_ix ON options(contract_name text_ops,last_trade timestamptz_ops);
+	`)
 	return nil
 }
 
