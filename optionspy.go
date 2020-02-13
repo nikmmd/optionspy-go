@@ -195,24 +195,12 @@ func main() {
 	c := colly.NewCollector(
 		colly.UserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"),
 		colly.Async(true),
-		colly.CacheDir("./cache"),
+		// colly.CacheDir("./cache"),
 	)
 
 	c.WithTransport(&t)
 
 	//TODO: Maybe add request proxy for large number of symbols
-	// rp, err := proxy.RoundRobinProxySwitcher(
-	// 	"socks5://91.209.108.168:22509",
-	// 	"socks5://18.139.84.238:1080",
-	// 	"socks5://159.89.49.106:3129",
-	// 	"socks5://138.201.20.3:1080",
-	// 	"socks5://164.132.105.156:1080",
-	// 	"socks5://13.229.153.63:1080")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// c.SetProxyFunc(rp)
 
 	c.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 50})
 
