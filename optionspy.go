@@ -31,6 +31,7 @@ type Option struct {
 	Symbol       string
 	Expiration   time.Time
 	OptionType   string
+	InsertAt     time.Time
 }
 
 func WriteOptions(db *pg.DB, options *[]Option) {
@@ -135,6 +136,8 @@ func ParseChain(db *pg.DB, chainCollector *colly.Collector) {
 
 			expiration, _ := time.Parse(expirationDateLayout, expirationDate)
 			option.Expiration = expiration
+
+			option.InsertAt = time.Now()
 			options = append(options, option)
 
 			count++
