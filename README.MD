@@ -15,7 +15,6 @@
 
 
 ## TODO:
-- ci
 - scraping tests
 - insert tests
 - credentials
