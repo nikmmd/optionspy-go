@@ -31,3 +31,5 @@ Run app:
 ```
 go run optionspy.go
 ```
+
+Schedule with crontab like: `*/1 14-21 * * 1-5`

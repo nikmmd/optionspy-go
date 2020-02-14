@@ -35,9 +35,9 @@ type Option struct {
 
 func WriteOptions(db *pg.DB, options *[]Option) {
 	if len(*options) > 0 {
-		err := db.Insert(options)
+		_, err := db.Model(options).OnConflict("DO NOTHING").Insert()
 		if err != nil {
-			fmt.Println(err)
+			panic(err)
 		}
 	}
 
@@ -141,7 +141,6 @@ func ParseChain(db *pg.DB, chainCollector *colly.Collector) {
 		})
 
 		WriteOptions(db, &options)
-		options = options[:len(options)-1]
 	})
 
 	chainCollector.OnScraped(func(r *colly.Response) {
