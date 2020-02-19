@@ -76,7 +76,7 @@ func ParseChain(db *pg.DB, chainCollector *colly.Collector) {
 		options := make([]Option, 0, 2000)
 		chainType := ""
 
-		if e.Attr("class") == "calls" {
+		if strings.Contains(e.Attr("class"), "calls") {
 			chainType = "C"
 		} else {
 			chainType = "P"
